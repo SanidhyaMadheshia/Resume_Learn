@@ -1,0 +1,135 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[top=0.4in, bottom=0.4in, left=0.45in, right=0.45in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext} % Times-style standard font (ATS-safe)
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+% -------------------------
+% ATS: make PDF text machine-readable
+% -------------------------
+\input{glyphtounicode}
+\pdfgentounicode=1
+\pdfinterwordspaceon % real space characters so parsers do not merge words at line ends
+
+\hypersetup{
+  pdftitle={Sanidhya Madeshia - Backend Software Engineer Resume},
+  pdfauthor={Sanidhya Madeshia},
+  pdfkeywords={Backend Engineer, Software Development Engineer, Java, Spring Boot, Go, Golang, Kafka, AWS, SNS, SQS, Distributed Systems, Microservices, Kubernetes, PostgreSQL, Redis, WebSockets, System Design, Blockchain, Solana}
+}
+
+% -------------------------
+% Spacing (Compact, single page)
+% -------------------------
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+\setlist[itemize]{noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0pt, leftmargin=1.2em}
+\linespread{1}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+
+% Clickable link that DISPLAYS the URL itself
+\newcommand{\link}[2]{\href{#1}{\nolinkurl{#2}}}
+
+\begin{document}
+
+%=======================
+% Header
+%=======================
+{\centering
+   {\LARGE \textbf{Sanidhya Madeshia}} \\[2pt]
+   India \textbar{}
+   \href{mailto:sanidhyaamazon1@gmail.com}{sanidhyaamazon1@gmail.com} \textbar{}
+   +91 8799015820 \textbar{}
+   Portfolio: \link{https://react-portfolio-chi-blush.vercel.app/}{react-portfolio-chi-blush.vercel.app} \\
+   LinkedIn: \link{https://www.linkedin.com/in/sanidhya-madeshia-620099293/}{linkedin.com/in/sanidhya-madeshia-620099293} \textbar{}
+   GitHub: \link{https://github.com/SanidhyaMadheshia}{github.com/SanidhyaMadheshia} \par}
+
+%=======================
+% Summary
+%=======================
+\section*{SUMMARY}
+Software Development Intern at \textbf{Amazon (Alexa Smart Home)} building \textbf{high-throughput, event-driven distributed systems} in \textbf{Java (Spring Boot), Go, TypeScript, and Python}. Delivered a Go multiplayer backend serving \textbf{1,000 concurrent players at 0.76 ms p99} latency using \textbf{Kafka, AWS SNS/SQS, PostgreSQL, Redis, Docker, and Kubernetes}.
+
+%=======================
+% Experience
+%=======================
+\section*{WORK EXPERIENCE}
+\textbf{Software Development Intern, Amazon -- Alexa Smart Home} \hfill Jul 2026 -- Present
+\begin{itemize}
+    \item Engineered recommendation-serving backend logic in \textbf{Java (Spring Boot)} for a \textbf{4,400 TPS} service delivering personalized content to \textbf{Alexa Smart Home} devices.
+    \item Developed the \textbf{recordInteraction} API to capture, validate, and process user interactions with recommended content, collaborating with team engineers through design and code reviews.
+    \item Integrated publish/subscribe event flows across \textbf{3 messaging systems (Kafka, AWS SNS, AWS SQS)}, decoupling interaction producers from downstream consumers.
+\end{itemize}
+\textbf{Full Stack Intern, Inbotiq} \hfill 2024 -- Present
+\begin{itemize}
+    \item Built backend services in \textbf{Python (FastAPI)} for a \textbf{production AI voice bot platform} handling \textbf{100+ calls/day}.
+    \item Orchestrated \textbf{3 AI stages (STT, LLM, TTS)} per call and managed the full call lifecycle through \textbf{webhooks}.
+    \item Increased call reliability by adding \textbf{Silero voice activity detection (VAD)} and \textbf{PostgreSQL}-backed session state management.
+\end{itemize}
+
+%=======================
+% Projects
+%=======================
+\section*{PROJECTS}
+\textbf{LocalArena -- Distributed Multiplayer Game Backend} \textbar{} \textit{Go, Java, Kafka, Kubernetes, PostgreSQL} \hfill Oct 2026 \\
+GitHub: \link{https://github.com/SanidhyaMadheshia/localArena}{github.com/SanidhyaMadheshia/localArena}
+\begin{itemize}
+    \item Architected a server-authoritative game backend in \textbf{Go} (20 Hz tick, WebSockets, gRPC), sustaining \textbf{1,000 concurrent bots across 50 matches at 0.76 ms p99} tick latency.
+    \item Designed an event pipeline with \textbf{Kafka}, outbox + \textbf{Debezium CDC}, and \textbf{Kafka Streams}, achieving \textbf{0 duplicate rewards across 1.45M replayed events}.
+    \item Deployed on \textbf{Kubernetes (Helm, Argo CD)} behind \textbf{Envoy}, passing canary, rollback, and failover drills with \textbf{0 of 90,000 requests failed}.
+    \item Diagnosed \textbf{11 production-style failures} (deadlocks, retry storms, failover gaps) and documented fixes in \textbf{22 ADRs and 2 postmortems}.
+\end{itemize}
+
+\textbf{TTL-Based Ephemeral Chat, Voice \& Video Platform} \textbar{} \textit{Go, Redis, WebRTC, Next.js} \hfill Jan 2026 -- Present \\
+GitHub: \link{https://github.com/SanidhyaMadheshia/ttl-based-chats}{github.com/SanidhyaMadheshia/ttl-based-chats} \textbar{}
+Live: \link{https://ttl-based-chats.vercel.app/}{ttl-based-chats.vercel.app} \textbar{}
+Post: \link{https://lnkd.in/p/gaNiBDrH}{lnkd.in/p/gaNiBDrH}
+\begin{itemize}
+    \item Created real-time chat rooms in \textbf{Go (gorilla/websocket)} with \textbf{2 goroutines per connection} and a central hub that evicts slow consumers.
+    \item Modeled messages, presence, and rooms in \textbf{Redis} with \textbf{TTL expiry}, giving \textbf{O(1)} access and self-deleting rooms; built the \textbf{Next.js} client.
+    \item Implemented peer-to-peer \textbf{WebRTC} voice and video for \textbf{up to 8 users per room}, relaying only SDP/ICE signaling through the Go server.
+\end{itemize}
+
+\textbf{SolanaPay -- Stripe-like Payment Infrastructure for Solana} \textbar{} \textit{TypeScript, Node.js, PostgreSQL} \hfill Oct 2025 -- Dec 2025 \\
+GitHub: \link{https://github.com/SanidhyaMadheshia/solanaPaymentsStripe}{github.com/SanidhyaMadheshia/solanaPaymentsStripe} \textbar{}
+Live: \link{https://solpay-zeta.vercel.app/}{solpay-zeta.vercel.app} \textbar{}
+Post: \link{https://lnkd.in/p/gj64xNR7}{lnkd.in/p/gj64xNR7}
+\begin{itemize}
+    \item Launched a hosted checkout and \textbf{REST API} letting Web2 merchants accept \textbf{Solana} payments, verifying each transaction \textbf{on-chain}.
+    \item Bundled merchant payment and platform fee into \textbf{1 atomic transaction}, with real-time status via \textbf{Socket.io} and merchant webhooks.
+    \item Secured the \textbf{Express + Prisma (PostgreSQL)} backend with \textbf{SHA-256 hashed API keys}, Bearer auth, and key revocation.
+\end{itemize}
+
+%=======================
+% Skills
+%=======================
+\section*{SKILLS}
+\textbf{Languages:} Java, Go, TypeScript, JavaScript, Python, C++, C, Rust, Solidity, SQL \\
+\textbf{Backend \& Real-Time:} Spring Boot, Node.js, Express, FastAPI, gRPC, REST APIs, WebSockets, Socket.io, WebRTC \\
+\textbf{Messaging \& Data:} Kafka, Kafka Streams, Debezium, AWS SNS/SQS, PostgreSQL, Redis, Valkey, MongoDB \\
+\textbf{Cloud \& DevOps:} AWS, Docker, Kubernetes, Helm, Argo CD, OpenTofu, Envoy, Prometheus, Grafana, CI/CD, Git, Linux \\
+\textbf{Frontend \& Blockchain:} React, Next.js, Solana \& EVM Smart Contracts, Web3.js, Ethers.js \\
+\textbf{Concepts:} Distributed Systems, System Design, Microservices, Event-Driven Architecture, Concurrency, DSA, OOP
+
+%=======================
+% Education
+%=======================
+\section*{EDUCATION}
+\textbf{Indian Institute of Information Technology (IIIT), Kota} -- B.Tech in Computer Science and Engineering \hfill 2023 -- 2027 \\
+\textbf{Relevant Coursework:} Data Structures \& Algorithms, Operating Systems, DBMS, Computer Networks, Object-Oriented Programming
+
+%=======================
+% Leadership
+%=======================
+\section*{LEADERSHIP \& ACTIVITIES}
+\textbf{Coordinator \& Web3 Lead, Codebase Club -- IIIT Kota} \hfill 2023 -- Present
+\begin{itemize}
+    \item Led the club's blockchain projects, shipping dApps and \textbf{Solidity} smart contracts with \textbf{Web3.js and Ethers.js}.
+    \item Mentored \textbf{30+ developers} and presented \textbf{weekly workshops for 15+ members} on smart contracts, Git, and full-stack integration.
+\end{itemize}
+
+\end{document}
